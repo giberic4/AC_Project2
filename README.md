@@ -6,7 +6,6 @@ Project 2 - Artur, Eric, John R.
 
 ## Project Overview
 
-A social media site where users can come together to share their love of plants by maintaining a virtual garden.
 
 
 ## MVP goals
