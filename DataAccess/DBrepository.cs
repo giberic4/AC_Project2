@@ -4,10 +4,6 @@ using System.Data.SqlClient;
 namespace DataAccess;
 public class DBRepository : IRepository
 {
-    private readonly string _connectionString;
-    public DBRepository(string connectionString) {
-        _connectionString = connectionString;
-    }
     public User AddUser(User user)
     {
         try{
