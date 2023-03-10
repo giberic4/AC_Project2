@@ -49,7 +49,7 @@ public class Marketplace
             return _unitPrice;
         }
     }
-    public int SelleId {
+    public int SellerId {
         set {
             _sellerId=value;
         }
