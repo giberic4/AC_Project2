@@ -64,13 +64,3 @@ We are working together to create a Animal Crossing E-commerce site with some of
 ### Who's managing the kanban board?: 
 - Artur
 
-
-
-what's your coding convention going to be?
-how are we commenting our code
-what are we going to return when we're dealing with input validation?
-400?
-401?
-how are we going to name our end points
-how is the workflow of the app going to look like
-wireframe
