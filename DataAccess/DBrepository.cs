@@ -14,6 +14,18 @@ public class DBRepository : IRepository
         try{
             using SqlConnection connect = new SqlConnection(_connectString);
             connect.Open();
+<<<<<<< HEAD
+
+            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
+            command.Parameters.AddWithValue("@fName", user.FirstName);
+            command.Parameters.AddWithValue("@lName", user.LastName);
+            command.Parameters.AddWithValue("@uName", user.Username);
+            command.Parameters.AddWithValue("@uPwd", user.Password);
+            command.Parameters.AddWithValue("@uWallet", user.Wallet);
+            
+            int createdId = (int) command.ExecuteScalar();
+            user.Id = createdId;
+=======
             using SqlCommand command = new SqlCommand("INSERT INTO EmployeeTable(EmployeeName, Username, userID, empPassword, EmployeeType) VALUES (@eName, @uName, @uID, @ePwd, @eType)", connect);
             command.Parameters.AddWithValue("@eName", user.empName);
             command.Parameters.AddWithValue("@uName", user.username);
@@ -22,6 +34,7 @@ public class DBRepository : IRepository
             command.Parameters.AddWithValue("@eType", user.employeeType);
             string userID = (string)command.ExecuteScalar();
 
+>>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
 
             return user;
         }
