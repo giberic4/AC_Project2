@@ -6,4 +6,5 @@ public interface IRepository{
         List<Item> GetAllItems();
         // User AddUser(User user);
         bool UserLogin(User user);
+        User ViewPersonalInventory(User user);
 }
