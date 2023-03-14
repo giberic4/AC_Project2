@@ -4,6 +4,11 @@ using System.Data.SqlClient;
 namespace DataAccess;
 public class DBRepository : IRepository
 {
+    private readonly string _connectionString;
+    public DBRepository(string connectionString) {
+        _connectionString = connectionString;
+    }
+
     public User AddUser(User user)
     {
         try{
@@ -34,5 +39,23 @@ public class DBRepository : IRepository
     public List<User> GetAllUsers()
     {
         throw new NotImplementedException();
+    }
+
+    public bool UserLogin(User user) {
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS", connection);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        
+        while(reader.Read()) {
+            string uName = (string) reader["username"];
+            string uPassword = (string) reader["password"];
+            if(uName==user.Username && uPassword==user.Password) {
+                return true;
+            }            
+        }
+        return false;
     }
 }
