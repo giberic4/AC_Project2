@@ -13,7 +13,7 @@ GO
 
 CREATE TABLE [users] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
-  [created_at] timestamp,
+  [created_at] varchar(255),
   [first_name] nvarchar(255),
   [last_name] nvarchar(255),
   [username] nvarchar(255),
@@ -23,7 +23,7 @@ CREATE TABLE [users] (
 GO
 
 CREATE TABLE [store_inventory] (
-  [listing_id] int PRIMARY KEY,
+  [listing_id] int PRIMARY KEY IDENTITY(1000, 1),
   [item_id] int,
   [quantity] int,
   [unit_price] int,
