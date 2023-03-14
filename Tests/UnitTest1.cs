@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using DataAccess;
 using Models;
 using Services;
