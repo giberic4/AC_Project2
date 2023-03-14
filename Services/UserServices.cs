@@ -31,10 +31,10 @@ public class UserServices{
         return _iRepo.GetAllUsers();
     }
     public bool UserLogin(User user){
-        Console.WriteLine("@@");
         return _iRepo.UserLogin(user);
     }
 
-  
-    
+    public User ViewPersonalInventory(User user) {
+        return _iRepo.ViewPersonalInventory(user);
+    }
 }

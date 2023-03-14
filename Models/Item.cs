@@ -5,10 +5,12 @@ public class Item
 {
     private int _id;
     private string? _name;
-    public Item(int id, string? name)
+    private int _balance = 0;
+    public Item(int id, string? name, int balance=0)
     {
         _id = id;
-        _name = name;        
+        _name = name;
+        _balance=balance;        
     }
     public int Id {
         set {
@@ -24,6 +26,15 @@ public class Item
         }
         get {
             return _name;
+        }
+    }
+
+    public int Balance {
+        set {
+            _balance = value;
+        }
+        get {
+            return _balance;
         }
     }
 

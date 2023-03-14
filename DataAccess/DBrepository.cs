@@ -62,4 +62,24 @@ public class DBRepository : IRepository
         }
         return false;
     }
+
+    public User ViewPersonalInventory(User user) {
+        
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT USERS_ITEMS.id,ITEM.name, USERS_ITEMS.quantity FROM USERS_ITEMS join ITEM on ITEM.id=USERS_ITEMS.id where USERS_ITEMS.user_id=@id", connection);
+        cmd.Parameters.AddWithValue("@id", user.Id);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        
+        while(reader.Read()) {
+            int iid=(int) reader["id"];
+            string iname = (string) reader["name"];
+            int iquantity = (int) reader["quantity"];
+            user.listOfItems.Add(new Item(iid,iname,iquantity));
+            }            
+        
+        return user;
+    }
 }

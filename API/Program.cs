@@ -41,6 +41,10 @@ app.MapPost("/login", ([FromBody] User user, UserServices service) => {
     return service.UserLogin(user);
 });
 
+app.MapPost("/user-inventory", ([FromBody] User user, UserServices service) => {
+    return service.ViewPersonalInventory(user).listOfItems;
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
