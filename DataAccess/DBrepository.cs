@@ -12,8 +12,9 @@ public class DBRepository : IRepository
             
             using SqlConnection connect = new SqlConnection(_connectString);
             connect.Open();
-            using SqlCommand command = new SqlCommand("INSERT INTO Users(id, created_at, first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
-            command.Parameters.AddWithValue("@eName", user.FirstName);
+
+            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
+            command.Parameters.AddWithValue("@fName", user.FirstName);
             command.Parameters.AddWithValue("@lName", user.LastName);
             command.Parameters.AddWithValue("@uName", user.Username);
             command.Parameters.AddWithValue("@uPwd", user.Password);
