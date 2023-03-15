@@ -28,6 +28,7 @@ public class MainMenu
             Console.WriteLine("1 -> Login to My Account");
             Console.WriteLine("2 -> Register to New Account");
             Console.WriteLine("3 -> Show Users List");
+            Console.WriteLine("4 -> Test sell_item");
 
             string input= Console.ReadLine()!;
 
@@ -55,6 +56,19 @@ public class MainMenu
                 List<User> users = JsonSerializer.Deserialize<List<User>>(content);
                 foreach (User u in users)
                     Console.WriteLine(u);
+                break;
+                case "4": 
+                int[] intlist = new int[4];
+                Console.WriteLine("id: ");
+                intlist[0] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("quantity: ");
+                intlist[1] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("user_id: ");
+                intlist[2] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("price: ");
+                intlist[3] = Int32.Parse(Console.ReadLine());
+                DataAccess.DBRepository.sellItem(intlist);
+                Console.Read();
                 break;
                 default:
                 Console.WriteLine("Invalid entry");
