@@ -13,10 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
-<<<<<<< HEAD
-=======
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 

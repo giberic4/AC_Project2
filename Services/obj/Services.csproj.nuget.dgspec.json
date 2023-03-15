@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj",
-        "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\obj\\",
-=======
     "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj": {}
   },
   "projects": {
@@ -88,82 +75,14 @@
         "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\17473\\.nuget\\packages\\",
         "outputPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\obj\\",
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\17473\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
-            "projectReferences": {
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
-          "dependencies": {
-            "system.data.sqlclient": {
-              "target": "Package",
-              "version": "[4.8.5, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj",
-        "projectName": "Models",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net7.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -201,20 +120,6 @@
         }
       }
     },
-<<<<<<< HEAD
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj",
-        "projectName": "Services",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
     "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -226,35 +131,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\17473\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-<<<<<<< HEAD
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-=======
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-<<<<<<< HEAD
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj"
-              },
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj"
-=======
               "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
                 "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj"
               },
               "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj": {
                 "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj"
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
               }
             }
           }
