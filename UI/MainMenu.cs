@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading;
+using DataAccess;
 
 namespace UI;
 
@@ -67,7 +68,7 @@ public class MainMenu
                 intlist[2] = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("price: ");
                 intlist[3] = Int32.Parse(Console.ReadLine());
-                DataAccess.DBRepository.sellItem(intlist);
+                new DBRepository(Secrets.getConnectionString()).sellItem(intlist);
                 Console.Read();
                 break;
                 default:
