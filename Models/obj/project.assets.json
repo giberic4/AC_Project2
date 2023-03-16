@@ -8,11 +8,25 @@
     "net7.0": []
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\giber\\.nuget\\packages\\": {}
+=======
     "C:\\Users\\17473\\.nuget\\packages\\": {}
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj",
+      "projectName": "Models",
+      "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
       "projectUniqueName": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj",
       "projectName": "Models",
       "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj",
@@ -21,6 +35,7 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\17473\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -68,7 +83,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+      "message": "Problem reading the cache file C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
       "message": "Problem reading the cache file C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
     }
   ]
 }

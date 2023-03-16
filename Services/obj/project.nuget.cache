@@ -1,5 +1,20 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "l7j6+Pk849fIUKpfJ+126Gca4sqI0mkfflJnc31ECEKNB4hipwq3m3U2GGqi6ecEBRZDPXJcaPMvuuh9QjCUAQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\giber\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\giber\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+=======
   "dgSpecHash": "bhEpe43ciH7w+6NGS2doMIPxa3eG90Mpeg2HKJWDiPjPhNfKZp3Dl+9k4tAiQJeGyQl20Q8wj1On1CLgqBhB5g==",
   "success": true,
   "projectFilePath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj",
@@ -13,13 +28,18 @@
     "C:\\Users\\17473\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\17473\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\17473\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
   ],
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+      "message": "Problem reading the cache file C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
       "message": "Problem reading the cache file C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
     }
   ]
 }

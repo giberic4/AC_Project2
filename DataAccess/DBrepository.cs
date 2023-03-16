@@ -1,6 +1,6 @@
 ﻿using Models;
 using System.Data.SqlClient;
-
+using System.Data;
 namespace DataAccess;
 public class DBRepository : IRepository
 {
@@ -82,4 +82,112 @@ public class DBRepository : IRepository
         
         return user;
     }
+
+
+
+
+    /// <summary>
+    /// This will take in a string list that we pass in
+    /// inclded should be the values for the indexes
+    ///  [0] id int
+    ///  [1] quantity int
+    ///  [2] user_id int
+    ///  [3] price int 
+    /// Once we have that we will call the stored procedure and add those to values to the command.
+    ///  </summary>
+    /// <param name=""></param>
+    /// <returns>This will return nothing at this time, but I would like it to return a bool or return the listing_id </returns>
+public void sellItem(int[] sellinfo)
+{     
+
+        int saleItemId = sellinfo[0];
+        int saleItemQuanity = sellinfo[1];
+        int saleItemUser_id = sellinfo[2];
+        int saleItemPrice = sellinfo[3];
+        
+            
+            try
+            {
+
+            using SqlConnection connection = new SqlConnection(_connectionString);
+                {
+
+
+
+                    using SqlCommand command = new SqlCommand("Sell_Item", connection);
+                    command.Connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@id" , saleItemId);
+                    command.Parameters.AddWithValue("@quantity" , saleItemQuanity);
+                    command.Parameters.AddWithValue("@user_id" , saleItemUser_id);
+                    command.Parameters.AddWithValue("@price" , saleItemPrice);
+
+                    int i = command.ExecuteNonQuery();
+                    if(i>0)
+                        {
+                        Console.WriteLine("Records Inserted Successfully.");
+                        }
+            
+                }
+
+                    
+            
+     }
+     catch(Exception ex)
+        {
+            throw;
+        }     
+}
+
+/// <summary>
+    /// This will take in a string list that we pass in
+    /// inclded should be the values for the indexes
+    // [0] listing_id int
+    // [1] quantity int
+    // [2] buyer_id int
+    // [3] price int
+    // [4] item_id int
+    // [5] seller_id int
+    /// Once we have that we will call the stored procedure and add those to values to the command.
+    ///  </summary>
+    /// <param name=""></param>
+    /// <returns>This will return nothing at this time, but I would like it to return a bool </returns>
+public void buyItem(int[] buyinfo)
+{           
+            try
+            {
+
+            using SqlConnection connection = new SqlConnection(_connectionString);
+                {
+
+
+
+                    using SqlCommand command = new SqlCommand("buy_item", connection);
+                    command.Connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@listing_id" , buyinfo[0]);
+                    command.Parameters.AddWithValue("@quantity" , buyinfo[1]);
+                    command.Parameters.AddWithValue("@buyer_id" , buyinfo[2]);
+                    command.Parameters.AddWithValue("@price" , buyinfo[3]);
+                    command.Parameters.AddWithValue("@item_id" , buyinfo[4]);
+                    command.Parameters.AddWithValue("@seller_id" , buyinfo[5]);
+
+                    int i = command.ExecuteNonQuery();
+                    if(i>0)
+                        {
+                        Console.WriteLine("That transaction is complete.");
+                        }
+            
+                }
+
+                    
+            
+     }
+     catch(Exception ex)
+        {
+            throw;
+        }     
+}
+
+
 }
