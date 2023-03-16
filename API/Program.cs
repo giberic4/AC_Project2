@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-using Models;
-using Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-
-
-=======
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using DataAccess;
 using Services;
 using Models;
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,12 +49,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-<<<<<<< HEAD
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
     return "User Created: " + Results.Created("/users", service.CreateAccount(user));
 });
-=======
-
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
 
 app.Run();
