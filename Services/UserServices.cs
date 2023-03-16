@@ -37,4 +37,5 @@ public class UserServices{
     public User ViewPersonalInventory(User user) {
         return _iRepo.ViewPersonalInventory(user);
     }
+
 }
