@@ -12,7 +12,7 @@ public class DBRepository : IRepository
     public User AddUser(User user)
     {
         try{
-            using SqlConnection connect = new SqlConnection(_connectString);
+            using SqlConnection connect = new SqlConnection(_connectionString);
             connect.Open();
 
 
@@ -30,7 +30,7 @@ public class DBRepository : IRepository
             return user;
         }
         catch(SqlException ex) {
-            Log.Warning("Error! Couldn't add user because {0}", ex);
+            //Log.Warning("Error! Couldn't add user because {0}", ex);
             throw;
         }
     }

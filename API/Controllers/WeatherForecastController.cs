@@ -1,32 +1,38 @@
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Services;
 
-namespace API.Controllers;
+namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class UserController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private readonly ILogger<UserController> _logger;
+    private readonly UserServices _service;
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public UserController(ILogger<UserController> logger, UserServices service)
     {
         _logger = logger;
+        _service = service;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    // [HttpGet]
+    // public List<WorkoutSession> Get()
+    // {
+    //     return _service.GetAllWorkouts();
+    // }
+
+    [HttpPost]
+    public ActionResult<User> Create(int id)
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        User user = new User();
+        user.Id=id;
+        return Created("/user-inventory", _service.ViewPersonalInventory(user));
     }
+
+    // [HttpPut]
+    // public ActionResult Put(WorkoutSession sessionToModify) {
+    //     return Ok();
+    // }
 }
