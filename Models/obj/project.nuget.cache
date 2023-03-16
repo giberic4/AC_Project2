@@ -1,15 +1,25 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "MbNwYuZD1cbV9lIoaK/Nap9rJV7vihCtJQDSuqu6nJx7XfzQoF62YjLtEBczYHmWxLg/egLAD1d3GD84Gg4+2A==",
   "success": true,
   "projectFilePath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj",
+=======
+  "dgSpecHash": "UrWffIi87I+M9crSLKQ8kLlc0U7wyCEVM5699e5dnS/idGbFiSaqVh9vwivH/ci2Pzwm8LnL4zDhUG59U5w6WA==",
+  "success": true,
+  "projectFilePath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj",
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
   "expectedPackageFiles": [],
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Problem reading the cache file C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+      "message": "Problem reading the cache file C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> dce1b79f51ec80027280b0756fb029cbe78e881b
     }
   ]
 }
