@@ -38,4 +38,8 @@ public class UserServices{
         return _iRepo.ViewPersonalInventory(user);
     }
 
+    public User GetUserByID(int userID) {
+        return _iRepo.GetUserByID(userID);
+    }
+
 }

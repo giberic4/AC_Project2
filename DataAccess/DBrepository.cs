@@ -45,6 +45,27 @@ public class DBRepository : IRepository
         throw new NotImplementedException();
     }
 
+    public User GetUserByID(int userID){
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS where id=@id", connection);
+         cmd.Parameters.AddWithValue("@id", userID);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        
+        while(reader.Read()) {
+            string uCreatedAt=(string) reader["created_at"];
+            string uFName = (string) reader["first_name"];
+            string uLName = (string) reader["last_name"];
+            string uName = (string) reader["username"];
+            string uPassword = (string) reader["password"];
+            int uWallet = (int) reader["wallet"];
+            return new User(userID,uCreatedAt,uFName,uLName,uPassword,uWallet);         
+        }
+        return new User();
+    }
+
     public bool UserLogin(User user) {
         using SqlConnection connection = new SqlConnection(_connectionString); 
         

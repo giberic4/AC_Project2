@@ -17,7 +17,8 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("http://example.com",
                                               "http://www.contoso.com",
                                               "http://localhost:4200",
-                                              "http://localhost:5144");
+                                              "http://localhost:5144")
+                                              .AllowAnyHeader();
                       });
 });
 
@@ -57,6 +58,10 @@ app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices servi
     User user = new User();
     user.Id=userid;
     return service.ViewPersonalInventory(user).listOfItems;
+});
+
+app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
+    return service.GetUserByID(userid);
 });
 
 
