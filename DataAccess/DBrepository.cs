@@ -104,6 +104,28 @@ public class DBRepository : IRepository
         return user;
     }
 
+    public List<Item> GetMarketplaceItems() {
+
+        List<Item> itemList = new List<Item>();
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT STORE_INVENTORY.listing_id,ITEM.name, STORE_INVENTORY.quantity, STORE_INVENTORY.unit_price FROM STORE_INVENTORY join ITEM on ITEM.id=STORE_INVENTORY.item_id", connection);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        int i =0;
+        while(reader.Read()) {
+            int iid=(int) reader["listing_id"];
+            string iname = (string) reader["name"];
+            int iquantity = (int) reader["quantity"];
+            int iprice = (int) reader["unit_price"];
+            Console.WriteLine(iname);
+            itemList.Add(new Item(iid,iname,iquantity,iprice));
+            }            
+        
+        return itemList;
+    }
+
 
 
 

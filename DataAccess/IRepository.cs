@@ -10,4 +10,5 @@ public interface IRepository{
         User ViewPersonalInventory(User user);
         void sellItem(int[] sellinfo);
         void buyItem(int[] buyinfo);
+        List<Item> GetMarketplaceItems();
 }

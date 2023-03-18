@@ -64,6 +64,10 @@ app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
     return service.GetUserByID(userid);
 });
 
+app.MapGet("/marketplace", (UserServices service) => {
+    return service.GetMarketplaceItems();
+});
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
