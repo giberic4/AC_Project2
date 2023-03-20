@@ -85,7 +85,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
-    return "User Created: " + Results.Created("/users", service.CreateAccount(user));
+    return Results.Created("/users/createAccount", service.CreateAccount(user));
 });
 
 app.Run();
