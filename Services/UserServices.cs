@@ -42,4 +42,8 @@ public class UserServices{
         return _iRepo.GetUserByID(userID);
     }
 
+    public List<Item> GetMarketplaceItems() {
+        return _iRepo.GetMarketplaceItems();
+    }
+
 }
