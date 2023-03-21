@@ -121,8 +121,16 @@ app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
     return service.GetUserByID(userid);
 });
 
+app.MapGet("/user1", ([FromQuery] string username, UserServices service) => {
+    return service.GetUserByUsername(username);
+});
+
 app.MapGet("/marketplace", (UserServices service) => {
     return service.GetMarketplaceItems();
+});
+
+app.MapGet("/marketplaceByName", (string searchitem, UserServices service) => {
+    return service.getMarketplaceItemsByName(searchitem);
 });
 
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
