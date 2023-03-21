@@ -1,12 +1,29 @@
+
+using Models;
+using Services;
+using DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using DataAccess;
-using Services;
-using Models;
+
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("http://example.com",
+                                              "http://www.contoso.com",
+                                              "http://localhost:4200",
+                                              "http://localhost:5144")
+                                              .AllowAnyHeader();
+                      });
+});
+
 // Add services to the container.
+builder.Services.AddScoped<UserServices>();
 
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
 {
@@ -31,6 +48,27 @@ app.MapPost("/login", ([FromBody] User user, UserServices service) => {
     return service.UserLogin(user);
 });
 
+// app.MapPost("/user-inventory", ([FromQuery] int userid, UserServices service) => {
+//     User user = new User();
+//     user.Id=userid; 
+//     return service.ViewPersonalInventory(user).listOfItems;
+// });
+
+app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices service) => {
+    User user = new User();
+    user.Id=userid;
+    return service.ViewPersonalInventory(user).listOfItems;
+});
+
+app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
+    return service.GetUserByID(userid);
+});
+
+app.MapGet("/marketplace", (UserServices service) => {
+    return service.GetMarketplaceItems();
+});
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -40,10 +78,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-
+app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
+    return Results.Created("/users/createAccount", service.CreateAccount(user));
+});
 
 app.Run();

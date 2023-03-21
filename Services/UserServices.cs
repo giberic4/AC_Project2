@@ -3,45 +3,47 @@ using Models;
 
 namespace Services;
 public class UserServices{
-    private IRepository _iRepo;
+
+    private readonly IRepository _iRepo;
+
+
     public UserServices(IRepository iRepo){
         _iRepo = iRepo;
+    }
+
+
+
+    public User CreateAccount(User user){
+        try{
+
+            _iRepo.AddUser(user);
+            user.Wallet = 1000;
+            return (user);
+
+        }
+        catch(ArgumentNullException e){
+            Console.Write("Error When Creating Account: {0}", e);
+            return null;
+        }
     }
 
     public List<User>? GetUsers(){
         return _iRepo.GetAllUsers();
     }
     public bool UserLogin(User user){
-        Console.WriteLine("@@");
         return _iRepo.UserLogin(user);
     }
 
-    // public void CreateAccount(){
-    //     try{
-    //         Console.Write("Please Enter Your First Name: ");
-    //         string fname = Console.ReadLine()!;
+    public User ViewPersonalInventory(User user) {
+        return _iRepo.ViewPersonalInventory(user);
+    }
 
-    //         Console.Write("Please Enter Your Last Name: ");
-    //         string lname = Console.ReadLine()!;
+    public User GetUserByID(int userID) {
+        return _iRepo.GetUserByID(userID);
+    }
 
-    //         Console.Write("Please Create Your Username: ");
-    //         string uName = Console.ReadLine()!;
+    public List<Item> GetMarketplaceItems() {
+        return _iRepo.GetMarketplaceItems();
+    }
 
-    //         Console.Write("Please Create A Password: ");
-    //         string pwd = Console.ReadLine()!;
-
-    //         User newUser = new ();
-    //         newUser.FirstName = fname;
-    //         newUser.LastName = lname;
-    //         newUser.Username = uName;
-    //         newUser.Password = pwd;
-    //         newUser.Wallet = 1000;
-    //         _iRepo.AddUser(newUser);
-
-    //     }
-    //     catch(Exception e){
-    //         Console.Write("Error When Creating Account: {0}", e);
-    //     }
-    // }
-    
 }

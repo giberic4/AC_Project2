@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading;
+using DataAccess;
 
 namespace UI;
 
@@ -28,6 +29,8 @@ public class MainMenu
             Console.WriteLine("1 -> Login to My Account");
             Console.WriteLine("2 -> Register to New Account");
             Console.WriteLine("3 -> Show Users List");
+            Console.WriteLine("4 -> Test sellItem");
+            Console.WriteLine("5 -> Test buyItem");
 
             string input= Console.ReadLine()!;
 
@@ -55,6 +58,35 @@ public class MainMenu
                 List<User> users = JsonSerializer.Deserialize<List<User>>(content);
                 foreach (User u in users)
                     Console.WriteLine(u);
+                break;
+                case "4": 
+                int[] intlist = new int[4];
+                Console.WriteLine("id: ");
+                intlist[0] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("quantity: ");
+                intlist[1] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("user_id: ");
+                intlist[2] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("price: ");
+                intlist[3] = Int32.Parse(Console.ReadLine());
+                new DBRepository(Secrets.getConnectionString()).sellItem(intlist);
+                Console.Read();
+                break;
+                case "5": 
+                int[] bintlist = new int[6];
+                Console.WriteLine("listing_id: ");
+                bintlist[0] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("quantity: ");
+                bintlist[1] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("buyer_id: ");
+                bintlist[2] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("price: ");
+                bintlist[3] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("item_id: ");
+                bintlist[4] = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("sell_id: ");
+                bintlist[5] = Int32.Parse(Console.ReadLine());
+                new DBRepository(Secrets.getConnectionString()).buyItem(bintlist);
                 break;
                 default:
                 Console.WriteLine("Invalid entry");
