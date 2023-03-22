@@ -73,46 +73,44 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-
-app.MapGet("/hello", () => "hello world!")
-    .RequireAuthorization();
-
 app.MapPost("/login", ([FromBody] User user, UserServices service) => {
     bool worked = service.UserLogin(user);
 
-    if (worked)
-    {
-        var issuer = builder.Configuration["Jwt:Issuer"];
-        var audience = builder.Configuration["Jwt:Audience"];
-        var key = Encoding.ASCII.GetBytes
-        (builder.Configuration["Jwt:Key"]);
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim("Id", Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-                new Claim(JwtRegisteredClaimNames.Email, user.Username),
-                new Claim(JwtRegisteredClaimNames.Jti,
-                Guid.NewGuid().ToString())
-             }),
-            Expires = DateTime.UtcNow.AddMinutes(10),
-            Issuer = issuer,
-            Audience = audience,
-            SigningCredentials = new SigningCredentials
-            (new SymmetricSecurityKey(key),
-            SecurityAlgorithms.HmacSha512Signature)
-        };
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        var jwtToken = tokenHandler.WriteToken(token);
-        var stringToken = tokenHandler.WriteToken(token);
-        return Results.Ok(stringToken);
-    }
-    return Results.Unauthorized();
+// app.MapPost("/login", ([FromBody] User user, UserServices service) => {
+//     bool worked = service.UserLogin(user);
 
-});
+//     if (worked)
+//     {
+//         var issuer = builder.Configuration["Jwt:Issuer"];
+//         var audience = builder.Configuration["Jwt:Audience"];
+//         var key = Encoding.ASCII.GetBytes
+//         (builder.Configuration["Jwt:Key"]);
+//         var tokenDescriptor = new SecurityTokenDescriptor
+//         {
+//             Subject = new ClaimsIdentity(new[]
+//             {
+//                 new Claim("Id", Guid.NewGuid().ToString()),
+//                 new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+//                 new Claim(JwtRegisteredClaimNames.Email, user.Username),
+//                 new Claim(JwtRegisteredClaimNames.Jti,
+//                 Guid.NewGuid().ToString())
+//              }),
+//             Expires = DateTime.UtcNow.AddMinutes(10),
+//             Issuer = issuer,
+//             Audience = audience,
+//             SigningCredentials = new SigningCredentials
+//             (new SymmetricSecurityKey(key),
+//             SecurityAlgorithms.HmacSha512Signature)
+//         };
+//         var tokenHandler = new JwtSecurityTokenHandler();
+//         var token = tokenHandler.CreateToken(tokenDescriptor);
+//         var jwtToken = tokenHandler.WriteToken(token);
+//         var stringToken = tokenHandler.WriteToken(token);
+//         return Results.Ok(stringToken);
+//     }
+//     return Results.Unauthorized();
+
+// });
 
 
 app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices service) => {
