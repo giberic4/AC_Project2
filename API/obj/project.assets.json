@@ -1422,19 +1422,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\17473\\.nuget\\packages\\": {}
+    "C:\\Users\\giber\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\17473\\.nuget\\packages\\",
-      "outputPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\API\\obj\\",
+      "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj",
+      "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\17473\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -1446,11 +1446,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj": {
-              "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj"
+            "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj"
             },
-            "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj": {
-              "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj"
+            "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj"
             }
           }
         }
