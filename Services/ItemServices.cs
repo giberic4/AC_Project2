@@ -13,4 +13,5 @@ public class ItemServices{
     }
     public void sellItem(int[] sellinfo) => _iRepo.sellItem(sellinfo);
     public void buyItem(Misc buyinfo) => _iRepo.buyItem(buyinfo);
+    public string buy_rand(int buyer_id) => _iRepo.buy_rand(buyer_id);
 }

@@ -155,6 +155,13 @@ app.MapPost("store/buy/", ([FromBody] Misc intarr, ItemServices service) => {
     service.buyItem(intarr);
 });
 
+app.MapPost("grabbag", ([FromBody] int num, ItemServices service) => {
+
+    return service.buy_rand(num);
+
+});
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

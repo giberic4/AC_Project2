@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj": {}
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj": {
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj",
+        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj",
         "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\obj\\",
+        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"

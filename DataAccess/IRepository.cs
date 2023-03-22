@@ -11,6 +11,8 @@ public interface IRepository{
         User ViewPersonalInventory(User user);
         void sellItem(int[] sellinfo);
         void buyItem(Misc misc);
+
+        string buy_rand(int buyer_id);
         List<Item> GetMarketplaceItems();
 
         List<Item> getMarketplaceItemsByName(string searchitem);
