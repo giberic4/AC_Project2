@@ -1,0 +1,32 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Models;
+using Services;
+
+
+namespace JWTWeb.AddControllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : ControllerBase
+    {
+            public static User user = new User();
+            
+            [HttpPost("register")]
+            public ActionResult<User> Register(UserDto request)
+            {
+            string passwordhash
+                = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
+            user.Username = request.Username;
+            user.Password = passwordhash;
+
+            return Ok(user);
+
+            }
+
+    }
+
+
+
+}

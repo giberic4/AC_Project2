@@ -7,12 +7,14 @@ public class Item
     private string? _name;
     private int _balance = 0; //Added for joining Item and User_items tables and showing item quantitry in the table of user items
     private int _unitPrice = 0; //Added for joining Item and Marketplace tables and showing item price in the table of marketplace items
-    public Item(int id, string? name, int balance=0, int unitprice=0)
+    private string _url="";
+    public Item(int id, string? name, int balance=0, int unitprice=0, string url="")
     {
         _id = id;
         _name = name;
         _balance=balance;
-        _unitPrice=unitprice;        
+        _unitPrice=unitprice;
+        _url=url;        
     }
     public int Id {
         set {
@@ -46,6 +48,15 @@ public class Item
         }
         get {
             return _unitPrice;
+        }
+    }
+
+     public string Url {
+        set {
+            _url = value;
+        }
+        get {
+            return _url;
         }
     }
 

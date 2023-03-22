@@ -17,11 +17,6 @@ public class UserController : ControllerBase
         _service = service;
     }
 
-    // [HttpGet]
-    // public List<WorkoutSession> Get()
-    // {
-    //     return _service.GetAllWorkouts();
-    // }
 
     [HttpPost]
     public ActionResult<User> Create(int id)
