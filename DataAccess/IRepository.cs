@@ -10,7 +10,7 @@ public interface IRepository{
         bool UserLogin(User user);
         User ViewPersonalInventory(User user);
         void sellItem(int[] sellinfo);
-        void buyItem(int[] buyinfo);
+        void buyItem(Misc misc);
         List<Item> GetMarketplaceItems();
 
         List<Item> getMarketplaceItemsByName(string searchitem);
