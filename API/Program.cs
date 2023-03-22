@@ -50,6 +50,8 @@ builder.Services.AddAuthentication(options =>
 
 // Add services to the container.
 
+builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<ItemServices>();
 
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
 {
@@ -62,6 +64,7 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 
 builder.Services.AddScoped<IRepository, DBRepository>(ctx => new DBRepository(builder.Configuration.GetConnectionString("P2DB")));
 builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<ItemServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -118,6 +121,15 @@ app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices servi
     return service.ViewPersonalInventory(user).listOfItems;
 });
 
+
+app.MapPost("/user-inventory/userid/sell", ([FromBody] int[] intrr, ItemServices service) => {
+
+service.sellItem(intrr);
+
+return 0;
+
+});
+
 app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
     return service.GetUserByID(userid);
 });
@@ -142,6 +154,14 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
     return "User Created: " + Results.Created("/users", service.CreateAccount(user));
 });
 
+
+app.MapPost("store/buy/", ([FromBody] int[] intarr, ItemServices service) => {
+    
+    int[] test = {1010,1,5,10,11,7};
+    service.buyItem(test);
+
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -155,5 +175,7 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+
 
 app.Run();
