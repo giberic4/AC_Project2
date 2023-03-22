@@ -74,7 +74,8 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.MapPost("/login", ([FromBody] User user, UserServices service) => {
-    bool worked = service.UserLogin(user);
+    return service.UserLogin(user);
+});
 
 // app.MapPost("/login", ([FromBody] User user, UserServices service) => {
 //     bool worked = service.UserLogin(user);
@@ -149,10 +150,9 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
 });
 
 
-app.MapPost("store/buy/", ([FromBody] int[] intarr, ItemServices service) => {
-    
+app.MapPost("store/buy/", ([FromBody] Misc intarr, ItemServices service) => {
+    Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@", intarr);
     service.buyItem(intarr);
-
 });
 
 // Configure the HTTP request pipeline.

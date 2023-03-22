@@ -17,7 +17,7 @@ public class User
     public User(){
         
     }
-    public User(int id, string? firstname, string? lastname, string? username, string? password, int wallet, string? email)
+    public User(int id, string? firstname, string? lastname, string? username, string? password, int wallet, string? email="")
     {
         _id = id;
         _firstName = firstname;

@@ -82,8 +82,8 @@ public class DBRepository : IRepository
             string uLName = (string) reader["last_name"];
             string uPassword = (string) reader["password"];
             int uWallet = (int) reader["wallet"];
-            string uEmail = (string) reader["email"];
-            return new User(uId,uFName,uLName,username,uPassword,uWallet,uEmail);         
+            // string uEmail = (string) reader["email"];
+            return new User(uId,uFName,uLName,username,uPassword,uWallet);         
         }
         return new User();
     }
@@ -243,7 +243,7 @@ public void sellItem(int[] sellinfo)
     ///  </summary>
     /// <param name=""></param>
     /// <returns>This will return nothing at this time, but I would like it to return a bool </returns>
-public void buyItem(int[] buyinfo)
+public void buyItem(Misc misc)
 {           
             try
             {
@@ -256,9 +256,9 @@ public void buyItem(int[] buyinfo)
                     using SqlCommand command = new SqlCommand("buy_item", connection);
                     command.Connection.Open();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@listing_id" , buyinfo[0]);
-                    command.Parameters.AddWithValue("@quantity" , buyinfo[1]);
-                    command.Parameters.AddWithValue("@buyer_id" , buyinfo[2]);
+                    command.Parameters.AddWithValue("@listing_id" , misc.ListingId);
+                    command.Parameters.AddWithValue("@quantity" , misc.Quantity);
+                    command.Parameters.AddWithValue("@buyer_id" , misc.BuyerId);
 
                     int i = command.ExecuteNonQuery();
                     if(i>0)

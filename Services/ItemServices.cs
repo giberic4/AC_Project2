@@ -12,5 +12,5 @@ public class ItemServices{
         _iRepo = iRepo;
     }
     public void sellItem(int[] sellinfo) => _iRepo.sellItem(sellinfo);
-    public void buyItem(int[] buyinfo) => _iRepo.buyItem(buyinfo);
+    public void buyItem(Misc buyinfo) => _iRepo.buyItem(buyinfo);
 }
