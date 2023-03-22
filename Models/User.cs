@@ -17,15 +17,15 @@ public class User
     public User(){
         
     }
-    public User(int id, string? firstname, string? lastname, string? username, string? password, string? email, int wallet)
+    public User(int id, string? firstname, string? lastname, string? username, string? password, int wallet, string? email)
     {
         _id = id;
         _firstName = firstname;
         _lastName = lastname;
         _username = username;
         _password = password;
-        _email = email;
         _wallet = wallet;
+        _email = email;
     }
 
     public int Id {
