@@ -148,15 +148,10 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
     return Results.Created("/users/createAccount", service.CreateAccount(user));
 });
 
-app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
-    return "User Created: " + Results.Created("/users", service.CreateAccount(user));
-});
-
 
 app.MapPost("store/buy/", ([FromBody] int[] intarr, ItemServices service) => {
     
-    int[] test = {1010,1,5,10,11,7};
-    service.buyItem(test);
+    service.buyItem(intarr);
 
 });
 
