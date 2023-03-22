@@ -259,9 +259,6 @@ public void buyItem(int[] buyinfo)
                     command.Parameters.AddWithValue("@listing_id" , buyinfo[0]);
                     command.Parameters.AddWithValue("@quantity" , buyinfo[1]);
                     command.Parameters.AddWithValue("@buyer_id" , buyinfo[2]);
-                    command.Parameters.AddWithValue("@price" , buyinfo[3]);
-                    command.Parameters.AddWithValue("@item_id" , buyinfo[4]);
-                    command.Parameters.AddWithValue("@seller_id" , buyinfo[5]);
 
                     int i = command.ExecuteNonQuery();
                     if(i>0)
