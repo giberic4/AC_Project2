@@ -147,6 +147,26 @@ public class DBRepository : IRepository
         return itemList;
     }
 
+    public List<int> GetSellerAndItemIdByListingId(int listing_id) {
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+        List<int> list= new List<int>();
+        using SqlCommand cmd = new SqlCommand("SELECT * FROM STORE_INVENTORY WHERE listing_id=@id", connection);
+        cmd.Parameters.AddWithValue("@id", listing_id);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        
+        while(reader.Read()) {
+            int sid=(int) reader["seller_id"];
+            int iid=(int) reader["item_id"];
+            list.Add(sid);
+            list.Add(iid);
+
+        }            
+        
+        return list;
+    }
+
     public List<Item> getMarketplaceItemsByName(string searchitem) {
 
         List<Item> itemList = new List<Item>();
@@ -241,7 +261,7 @@ public void sellItem(int[] sellinfo)
     /// <param name=""></param>
     /// <returns>This will return nothing at this time, but I would like it to return a bool </returns>
 public void buyItem(int[] buyinfo)
-{           
+{           Console.WriteLine("DB.cs");
             try
             {
 

@@ -70,46 +70,46 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-
-app.MapGet("/hello", () => "hello world!")
-    .RequireAuthorization();
-
 app.MapPost("/login", ([FromBody] User user, UserServices service) => {
-    bool worked = service.UserLogin(user);
-
-    if (worked)
-    {
-        var issuer = builder.Configuration["Jwt:Issuer"];
-        var audience = builder.Configuration["Jwt:Audience"];
-        var key = Encoding.ASCII.GetBytes
-        (builder.Configuration["Jwt:Key"]);
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim("Id", Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-                new Claim(JwtRegisteredClaimNames.Email, user.Username),
-                new Claim(JwtRegisteredClaimNames.Jti,
-                Guid.NewGuid().ToString())
-             }),
-            Expires = DateTime.UtcNow.AddMinutes(10),
-            Issuer = issuer,
-            Audience = audience,
-            SigningCredentials = new SigningCredentials
-            (new SymmetricSecurityKey(key),
-            SecurityAlgorithms.HmacSha512Signature)
-        };
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        var jwtToken = tokenHandler.WriteToken(token);
-        var stringToken = tokenHandler.WriteToken(token);
-        return Results.Ok(stringToken);
-    }
-    return Results.Unauthorized();
-
+    return service.UserLogin(user);
 });
+
+// app.MapPost("/login", ([FromBody] User user, UserServices service) => {
+//     bool worked = service.UserLogin(user);
+//     return service.UserLogin(user);
+//     if (worked)
+//     {
+//         return true;
+//         var issuer = builder.Configuration["Jwt:Issuer"];
+//         var audience = builder.Configuration["Jwt:Audience"];
+//         var key = Encoding.ASCII.GetBytes
+//         (builder.Configuration["Jwt:Key"]);
+//         var tokenDescriptor = new SecurityTokenDescriptor
+//         {
+//             Subject = new ClaimsIdentity(new[]
+//             {
+//                 new Claim("Id", Guid.NewGuid().ToString()),
+//                 new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+//                 new Claim(JwtRegisteredClaimNames.Email, user.Username),
+//                 new Claim(JwtRegisteredClaimNames.Jti,
+//                 Guid.NewGuid().ToString())
+//              }),
+//             Expires = DateTime.UtcNow.AddMinutes(10),
+//             Issuer = issuer,
+//             Audience = audience,
+//             SigningCredentials = new SigningCredentials
+//             (new SymmetricSecurityKey(key),
+//             SecurityAlgorithms.HmacSha512Signature)
+//         };
+//         var tokenHandler = new JwtSecurityTokenHandler();
+//         var token = tokenHandler.CreateToken(tokenDescriptor);
+//         var jwtToken = tokenHandler.WriteToken(token);
+//         var stringToken = tokenHandler.WriteToken(token);
+//         // return Results.Ok(stringToken);
+//     }
+//     return Results.Unauthorized();
+
+// });
 
 
 app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices service) => {
@@ -134,13 +134,22 @@ app.MapGet("/marketplaceByName", (string searchitem, UserServices service) => {
     return service.getMarketplaceItemsByName(searchitem);
 });
 
+app.MapGet("/sellerIDitemID", (int listing_id, UserServices service) => {
+    return service.GetSellerAndItemIdByListingId(listing_id);
+});
+
+app.MapPost("/marketplace/buy/checkout", ([FromBody] int[] buyInfo, UserServices service) => {
+    Console.WriteLine("Program.cs");
+    service.buyItem(buyInfo);
+});
+
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
     return Results.Created("/users/createAccount", service.CreateAccount(user));
 });
 
-app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
-    return "User Created: " + Results.Created("/users", service.CreateAccount(user));
-});
+// app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
+//     return "User Created: " + Results.Created("/users", service.CreateAccount(user));
+// });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

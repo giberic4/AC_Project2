@@ -54,4 +54,12 @@ public class UserServices{
         return _iRepo.getMarketplaceItemsByName(searchitem);
     }
 
+    public List<int> GetSellerAndItemIdByListingId(int listing_id) {
+        return _iRepo.GetSellerAndItemIdByListingId(listing_id);
+    }
+
+    public void buyItem(int[] buyinfo) {
+        Console.WriteLine("Service.cs");
+        _iRepo.buyItem(buyinfo);
+    }
 }

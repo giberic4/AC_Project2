@@ -12,6 +12,6 @@ public interface IRepository{
         void sellItem(int[] sellinfo);
         void buyItem(int[] buyinfo);
         List<Item> GetMarketplaceItems();
-
+        List<int> GetSellerAndItemIdByListingId(int listing_id);
         List<Item> getMarketplaceItemsByName(string searchitem);
 }
