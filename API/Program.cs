@@ -13,6 +13,7 @@ using JWTWeb;
 
 var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
@@ -48,7 +49,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Add services to the container.
-builder.Services.AddScoped<UserServices>();
+
 
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
 {
@@ -137,6 +138,10 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
     return Results.Created("/users/createAccount", service.CreateAccount(user));
 });
 
+app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
+    return "User Created: " + Results.Created("/users", service.CreateAccount(user));
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -150,4 +155,5 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();

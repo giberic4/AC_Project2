@@ -15,7 +15,6 @@ public class DBRepository : IRepository
             using SqlConnection connect = new SqlConnection(_connectionString);
             connect.Open();
 
-
             using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
             command.Parameters.AddWithValue("@fName", user.FirstName);
             command.Parameters.AddWithValue("@lName", user.LastName);
@@ -25,7 +24,6 @@ public class DBRepository : IRepository
             
             int createdId = (int) command.ExecuteScalar();
             user.Id = createdId;
-
 
             return user;
         }
