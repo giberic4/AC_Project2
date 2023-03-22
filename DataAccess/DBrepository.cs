@@ -15,11 +15,12 @@ public class DBRepository : IRepository
             using SqlConnection connect = new SqlConnection(_connectionString);
             connect.Open();
 
-            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
+            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet, email) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet, @uEmail)", connect);
             command.Parameters.AddWithValue("@fName", user.FirstName);
             command.Parameters.AddWithValue("@lName", user.LastName);
             command.Parameters.AddWithValue("@uName", user.Username);
             command.Parameters.AddWithValue("@uPwd", user.Password);
+            command.Parameters.AddWithValue("@uEmail", user.Email);
             command.Parameters.AddWithValue("@uWallet", user.Wallet);
             
             int createdId = (int) command.ExecuteScalar();
@@ -49,7 +50,7 @@ public class DBRepository : IRepository
         connection.Open();
 
         using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS where id=@id", connection);
-         cmd.Parameters.AddWithValue("@id", userID);
+        cmd.Parameters.AddWithValue("@id", userID);
         using SqlDataReader reader = cmd.ExecuteReader();
         
         while(reader.Read()) {
@@ -59,7 +60,8 @@ public class DBRepository : IRepository
             string uName = (string) reader["username"];
             string uPassword = (string) reader["password"];
             int uWallet = (int) reader["wallet"];
-            return new User(userID,uFName,uLName,uName,uPassword,uWallet);         
+            string uEmail = (string) reader["email"];
+            return new User(userID,uFName,uLName,uName,uPassword,uWallet,uEmail);         
         }
         return new User();
     }
@@ -70,7 +72,7 @@ public class DBRepository : IRepository
         connection.Open();
 
         using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS where username=@username", connection);
-         cmd.Parameters.AddWithValue("@username", username);
+        cmd.Parameters.AddWithValue("@username", username);
         using SqlDataReader reader = cmd.ExecuteReader();
         
         while(reader.Read()) {
@@ -80,7 +82,8 @@ public class DBRepository : IRepository
             string uLName = (string) reader["last_name"];
             string uPassword = (string) reader["password"];
             int uWallet = (int) reader["wallet"];
-            return new User(uId,uFName,uLName,username,uPassword,uWallet);         
+            string uEmail = (string) reader["email"];
+            return new User(uId,uFName,uLName,username,uPassword,uWallet,uEmail);         
         }
         return new User();
     }
@@ -220,8 +223,8 @@ public void sellItem(int[] sellinfo)
 
                     
             
-     }
-     catch(Exception ex)
+    }
+    catch(Exception ex)
         {
             throw;
         }     
@@ -270,8 +273,8 @@ public void buyItem(int[] buyinfo)
 
                     
             
-     }
-     catch(Exception ex)
+    }
+    catch(Exception ex)
         {
             throw;
         }     
