@@ -38,4 +38,20 @@ public class UserServices{
         return _iRepo.ViewPersonalInventory(user);
     }
 
+    public User GetUserByID(int userID) {
+        return _iRepo.GetUserByID(userID);
+    }
+
+    public User GetUserByUsername(string username) {
+        return _iRepo.GetUserByUsername(username);
+    }
+
+    public List<Item> GetMarketplaceItems() {
+        return _iRepo.GetMarketplaceItems();
+    }
+
+    public List<Item> getMarketplaceItemsByName(string searchitem) {
+        return _iRepo.getMarketplaceItemsByName(searchitem);
+    }
+
 }

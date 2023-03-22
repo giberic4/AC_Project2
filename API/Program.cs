@@ -1,11 +1,18 @@
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Models;
 using Services;
 using DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using System.Text;
+using JWTWeb;
 
 var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +24,32 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("http://example.com",
                                               "http://www.contoso.com",
                                               "http://localhost:4200",
-                                              "http://localhost:5144");
+                                              "http://localhost:5144")
+                                              .AllowAnyHeader();
                       });
+});
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey
+        (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = false,
+        ValidateIssuerSigningKey = true
+    };
 });
 
 // Add services to the container.
+
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<ItemServices>();
 
@@ -45,21 +73,54 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
+
+app.MapGet("/hello", () => "hello world!")
+    .RequireAuthorization();
+
 app.MapPost("/login", ([FromBody] User user, UserServices service) => {
-    return service.UserLogin(user);
+    bool worked = service.UserLogin(user);
+
+    if (worked)
+    {
+        var issuer = builder.Configuration["Jwt:Issuer"];
+        var audience = builder.Configuration["Jwt:Audience"];
+        var key = Encoding.ASCII.GetBytes
+        (builder.Configuration["Jwt:Key"]);
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(new[]
+            {
+                new Claim("Id", Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+                new Claim(JwtRegisteredClaimNames.Email, user.Username),
+                new Claim(JwtRegisteredClaimNames.Jti,
+                Guid.NewGuid().ToString())
+             }),
+            Expires = DateTime.UtcNow.AddMinutes(10),
+            Issuer = issuer,
+            Audience = audience,
+            SigningCredentials = new SigningCredentials
+            (new SymmetricSecurityKey(key),
+            SecurityAlgorithms.HmacSha512Signature)
+        };
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        var jwtToken = tokenHandler.WriteToken(token);
+        var stringToken = tokenHandler.WriteToken(token);
+        return Results.Ok(stringToken);
+    }
+    return Results.Unauthorized();
+
 });
 
-// app.MapPost("/user-inventory", ([FromQuery] int userid, UserServices service) => {
-//     User user = new User();
-//     user.Id=userid; 
-//     return service.ViewPersonalInventory(user).listOfItems;
-// });
 
 app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices service) => {
     User user = new User();
     user.Id=userid;
     return service.ViewPersonalInventory(user).listOfItems;
 });
+
 
 app.MapPost("/user-inventory/userid/sell", ([FromBody] int[] intrr, ItemServices service) => {
 
@@ -69,21 +130,25 @@ return 0;
 
 });
 
+app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
+    return service.GetUserByID(userid);
+});
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.MapGet("/user1", ([FromQuery] string username, UserServices service) => {
+    return service.GetUserByUsername(username);
+});
 
-app.UseHttpsRedirection();
+app.MapGet("/marketplace", (UserServices service) => {
+    return service.GetMarketplaceItems();
+});
 
-app.UseCors(MyAllowSpecificOrigins);
+app.MapGet("/marketplaceByName", (string searchitem, UserServices service) => {
+    return service.getMarketplaceItemsByName(searchitem);
+});
 
-app.UseAuthorization();
-
-app.MapControllers();
+app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
+    return Results.Created("/users/createAccount", service.CreateAccount(user));
+});
 
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
     return "User Created: " + Results.Created("/users", service.CreateAccount(user));
@@ -96,5 +161,21 @@ app.MapPost("store/buy/", ([FromBody] int[] intarr, ItemServices service) => {
     service.buyItem(test);
 
 });
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+
+
 
 app.Run();

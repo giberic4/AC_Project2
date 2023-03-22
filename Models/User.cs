@@ -8,14 +8,16 @@ public class User
     private string? _lastName;
     private string? _username;
     private string? _password;
+    private string? _email;
     private int _wallet;
+    
     
     public List<Item> listOfItems = new List<Item>();
 
     public User(){
         
     }
-    public User(int id, string? firstname, string? lastname, string? username, string? password, int wallet)
+    public User(int id, string? firstname, string? lastname, string? username, string? password, int wallet, string? email)
     {
         _id = id;
         _firstName = firstname;
@@ -23,6 +25,7 @@ public class User
         _username = username;
         _password = password;
         _wallet = wallet;
+        _email = email;
     }
 
     public int Id {
@@ -65,6 +68,14 @@ public class User
             return _password;
         }
     }
+    public string? Email {
+        set {
+            _email = value;
+        }
+        get {
+            return _email;
+        }
+    }
     public int Wallet {
         set {
             _wallet = value;
@@ -73,6 +84,7 @@ public class User
             return _wallet;
         }
     }
+
 
     public override string ToString()
     {

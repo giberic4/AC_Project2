@@ -15,17 +15,16 @@ public class DBRepository : IRepository
             using SqlConnection connect = new SqlConnection(_connectionString);
             connect.Open();
 
-
-            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
+            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet, email) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet, @uEmail)", connect);
             command.Parameters.AddWithValue("@fName", user.FirstName);
             command.Parameters.AddWithValue("@lName", user.LastName);
             command.Parameters.AddWithValue("@uName", user.Username);
             command.Parameters.AddWithValue("@uPwd", user.Password);
+            command.Parameters.AddWithValue("@uEmail", user.Email);
             command.Parameters.AddWithValue("@uWallet", user.Wallet);
             
             int createdId = (int) command.ExecuteScalar();
             user.Id = createdId;
-
 
             return user;
         }
@@ -43,6 +42,50 @@ public class DBRepository : IRepository
     public List<User> GetAllUsers()
     {
         throw new NotImplementedException();
+    }
+
+    public User GetUserByID(int userID){
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS where id=@id", connection);
+        cmd.Parameters.AddWithValue("@id", userID);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        
+        while(reader.Read()) {
+            // string uCreatedAt=(string) reader["created_at"];
+            string uFName = (string) reader["first_name"];
+            string uLName = (string) reader["last_name"];
+            string uName = (string) reader["username"];
+            string uPassword = (string) reader["password"];
+            int uWallet = (int) reader["wallet"];
+            string uEmail = (string) reader["email"];
+            return new User(userID,uFName,uLName,uName,uPassword,uWallet,uEmail);         
+        }
+        return new User();
+    }
+
+    public User GetUserByUsername(string username){
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS where username=@username", connection);
+        cmd.Parameters.AddWithValue("@username", username);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        
+        while(reader.Read()) {
+            int uId=(int) reader["id"];
+            // string uCreatedAt=(string) reader["created_at"];
+            string uFName = (string) reader["first_name"];
+            string uLName = (string) reader["last_name"];
+            string uPassword = (string) reader["password"];
+            int uWallet = (int) reader["wallet"];
+            string uEmail = (string) reader["email"];
+            return new User(uId,uFName,uLName,username,uPassword,uWallet,uEmail);         
+        }
+        return new User();
     }
 
     public bool UserLogin(User user) {
@@ -69,7 +112,7 @@ public class DBRepository : IRepository
         
         connection.Open();
 
-        using SqlCommand cmd = new SqlCommand("SELECT USERS_ITEMS.id,ITEM.name, USERS_ITEMS.quantity FROM USERS_ITEMS join ITEM on ITEM.id=USERS_ITEMS.id where USERS_ITEMS.user_id=@id", connection);
+        using SqlCommand cmd = new SqlCommand("SELECT USERS_ITEMS.id,ITEM.name, USERS_ITEMS.quantity,ITEM.url FROM USERS_ITEMS join ITEM on ITEM.id=USERS_ITEMS.id where USERS_ITEMS.user_id=@id", connection);
         cmd.Parameters.AddWithValue("@id", user.Id);
         using SqlDataReader reader = cmd.ExecuteReader();
         
@@ -77,10 +120,58 @@ public class DBRepository : IRepository
             int iid=(int) reader["id"];
             string iname = (string) reader["name"];
             int iquantity = (int) reader["quantity"];
-            user.listOfItems.Add(new Item(iid,iname,iquantity));
+            string iurl=(string) reader["url"];
+            user.listOfItems.Add(new Item(iid,iname,iquantity,url: iurl));
             }            
         
         return user;
+    }
+
+    public List<Item> GetMarketplaceItems() {
+
+        List<Item> itemList = new List<Item>();
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand("SELECT STORE_INVENTORY.listing_id,ITEM.name, STORE_INVENTORY.quantity, STORE_INVENTORY.unit_price, ITEM.url FROM STORE_INVENTORY join ITEM on ITEM.id=STORE_INVENTORY.item_id", connection);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        int i =0;
+        while(reader.Read()) {
+            int iid=(int) reader["listing_id"];
+            string iname = (string) reader["name"];
+            int iquantity = (int) reader["quantity"];
+            int iprice = (int) reader["unit_price"];
+            string iurl=(string) reader["url"];
+            Console.WriteLine(iname);
+            itemList.Add(new Item(iid,iname,iquantity,iprice,iurl));
+            }            
+        
+        return itemList;
+    }
+
+    public List<Item> getMarketplaceItemsByName(string searchitem) {
+
+        List<Item> itemList = new List<Item>();
+        using SqlConnection connection = new SqlConnection(_connectionString); 
+        
+        connection.Open();
+
+        using SqlCommand cmd = new SqlCommand($"SELECT STORE_INVENTORY.listing_id,ITEM.name, STORE_INVENTORY.quantity, STORE_INVENTORY.unit_price, ITEM.url FROM STORE_INVENTORY join ITEM on ITEM.id=STORE_INVENTORY.item_id where ITEM.name LIKE '%{searchitem}%'", connection);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        // cmd.Parameters.AddWithValue("@search", $"'% + {searchitem} +%'");
+        int i =0;
+        while(reader.Read()) {
+            int iid=(int) reader["listing_id"];
+            string iname = (string) reader["name"];
+            int iquantity = (int) reader["quantity"];
+            int iprice = (int) reader["unit_price"];
+            string iurl=(string) reader["url"];
+            Console.WriteLine(iname);
+            itemList.Add(new Item(iid,iname,iquantity,iprice,iurl));
+            }            
+        
+        return itemList;
     }
 
 
@@ -132,8 +223,8 @@ public void sellItem(int[] sellinfo)
 
                     
             
-     }
-     catch(Exception ex)
+    }
+    catch(Exception ex)
         {
             throw;
         }     
@@ -182,8 +273,8 @@ public void buyItem(int[] buyinfo)
 
                     
             
-     }
-     catch(Exception ex)
+    }
+    catch(Exception ex)
         {
             throw;
         }     
