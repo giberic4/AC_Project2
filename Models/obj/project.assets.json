@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature\\230206-NET\\AC_Project2\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Revature\\230206-NET\\AC_Project2\\Models\\Models.csproj",
+      "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\17473\\.nuget\\packages\\",
-      "outputPath": "C:\\Revature\\230206-NET\\AC_Project2\\Models\\obj\\",
+      "outputPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\17473\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -62,5 +62,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
