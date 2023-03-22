@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using DataAccess;
 using Models;
 using Services;
@@ -64,17 +63,11 @@ public class UnitTest1{
         Assert.Equal(newUser.Wallet, 1000);
 
 }
-}
-=======
+
 // dotnet test --collect:"XPlat Code Coverage"
 // dotnet tool install -g dotnet-reportgenerator-globaltool
 // reportgenerator -reports:"./TestResults/23249cf1-781a-4bc5-ad73-7179a1fa90d0/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttype:Html
-using Models;
 
-namespace Tests;
-
-public class UnitTest1
-{
     // User class members test
     [Fact]
     public void CheckUserConstructor()
@@ -193,4 +186,3 @@ public class UnitTest1
 
 }
 
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b

@@ -4,12 +4,14 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 # User-specific files
+**/DataAccess/obj/Debug/net7.0/DataAccess.assets.cache
 *.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 *.appsettings.Development.json
+*.secrets.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
