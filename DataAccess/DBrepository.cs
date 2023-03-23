@@ -275,4 +275,45 @@ public void buyItem(Misc misc)
 }
 
 
+public string buy_rand(int buyer_id)
+{
+               try
+            {
+
+            using SqlConnection connection = new SqlConnection(_connectionString);
+                {
+
+
+
+                    using SqlCommand command = new SqlCommand("buy_rand", connection);
+                    command.Connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@buyer_id" , buyer_id);
+
+                    string retItemName = command.ExecuteScalar().ToString();
+                    if(!string.IsNullOrEmpty(retItemName))
+                        {
+                        Console.WriteLine("That transaction is complete.");
+                        return retItemName;
+                        }
+                else return "error";
+                }
+
+                    
+            
+    }
+    catch(Exception ex)
+        {
+            throw;
+        }     
 }
+
+
+
+}
+
+
+
+
+
+

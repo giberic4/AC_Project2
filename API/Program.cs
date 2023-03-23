@@ -127,7 +127,11 @@ app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices servi
 
 // return 0;
 
-// });
+});
+
+app.MapGet("/hello", () => {
+    return "Hello";
+});
 
 app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
     return service.GetUserByID(userid);
@@ -153,6 +157,13 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
 app.MapPost("store/buy/", ([FromBody] Misc intarr, ItemServices service) => {
     service.buyItem(intarr);
 });
+
+app.MapPost("grabbag", ([FromBody] int num, ItemServices service) => {
+
+    return service.buy_rand(num);
+
+});
+
 
 app.MapPost("store/sell/", ([FromBody] Sellinfo intarr, ItemServices service) => {
     Console.WriteLine("AAAAAAAAAAAA",intarr);
