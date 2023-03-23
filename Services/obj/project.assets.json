@@ -505,19 +505,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\giber\\.nuget\\packages\\": {}
+    "C:\\Users\\17473\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\obj\\",
+      "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\Services.csproj",
+      "packagesPath": "C:\\Users\\17473\\.nuget\\packages\\",
+      "outputPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\17473\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -529,11 +529,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj"
+            "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj"
             },
-            "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj"
+            "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj": {
+              "projectPath": "C:\\Revature\\230206-NET\\P2-AEJ-Backend\\Models\\Models.csproj"
             }
           }
         }

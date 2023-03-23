@@ -185,13 +185,13 @@ public class DBRepository : IRepository
     ///  </summary>
     /// <param name=""></param>
     /// <returns>This will return nothing at this time, but I would like it to return a bool or return the listing_id </returns>
-public void sellItem(int[] sellinfo)
+public void sellItem(Sellinfo sellinfo)
 {     
 
-        int saleItemId = sellinfo[0];
-        int saleItemQuanity = sellinfo[1];
-        int saleItemUser_id = sellinfo[2];
-        int saleItemPrice = sellinfo[3];
+        int saleItemId = sellinfo.ItemId;
+        int saleItemQuanity = sellinfo.Quantity;
+        int saleItemUser_id = sellinfo.SellerId;
+        int saleItemPrice = sellinfo.Price;
         
             
             try
