@@ -9,7 +9,7 @@ public interface IRepository{
         User GetUserByUsername(string username);
         bool UserLogin(User user);
         User ViewPersonalInventory(User user);
-        void sellItem(int[] sellinfo);
+        void sellItem(Sellinfo sellinfo);
         void buyItem(Misc misc);
         List<Item> GetMarketplaceItems();
 

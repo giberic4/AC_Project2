@@ -121,13 +121,13 @@ app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices servi
 });
 
 
-app.MapPost("/user-inventory/userid/sell", ([FromBody] int[] intrr, ItemServices service) => {
+// app.MapPost("/user-inventory/userid/sell", ([FromBody] int[] intrr, ItemServices service) => {
 
-service.sellItem(intrr);
+// service.sellItem(intrr);
 
-return 0;
+// return 0;
 
-});
+// });
 
 app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
     return service.GetUserByID(userid);
@@ -151,8 +151,12 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
 
 
 app.MapPost("store/buy/", ([FromBody] Misc intarr, ItemServices service) => {
-    Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@", intarr);
     service.buyItem(intarr);
+});
+
+app.MapPost("store/sell/", ([FromBody] Sellinfo intarr, ItemServices service) => {
+    Console.WriteLine("AAAAAAAAAAAA",intarr);
+    service.sellItem(intarr);
 });
 
 // Configure the HTTP request pipeline.
