@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rYZ2WXMHTGnidITEwgpAdULQs3m2zzoinBYf+7znc4rsVU1xgaYwbRjSbsWT8JVzRV71NWN8/BYzEw8AdoPslQ==",
+  "dgSpecHash": "4Krb5meBtOLljWcF+xkjG2XLCnpdZosXaPVK7lCKhvahaho/YBRWdjRFNKEIKfUPfdRy1VK06fzPhxBQho3Vmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\giber\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\giber\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.4\\microsoft.aspnetcore.authentication.jwtbearer.7.0.4.nupkg.sha512",

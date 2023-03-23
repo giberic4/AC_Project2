@@ -129,6 +129,10 @@ return 0;
 
 });
 
+app.MapGet("/hello", () => {
+    return "Hello";
+});
+
 app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
     return service.GetUserByID(userid);
 });
