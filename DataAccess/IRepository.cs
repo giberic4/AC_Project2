@@ -9,8 +9,10 @@ public interface IRepository{
         User GetUserByUsername(string username);
         bool UserLogin(User user);
         User ViewPersonalInventory(User user);
-        void sellItem(int[] sellinfo);
-        void buyItem(int[] buyinfo);
+        void sellItem(Sellinfo sellinfo);
+        void buyItem(Misc misc);
+
+        string buy_rand(int buyer_id);
         List<Item> GetMarketplaceItems();
 
         List<Item> getMarketplaceItemsByName(string searchitem);

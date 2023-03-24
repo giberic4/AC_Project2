@@ -15,12 +15,11 @@ public class DBRepository : IRepository
             using SqlConnection connect = new SqlConnection(_connectionString);
             connect.Open();
 
-            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet, email) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet, @uEmail)", connect);
+            using SqlCommand command = new SqlCommand("INSERT INTO Users(first_name, last_name, username, password, wallet) OUTPUT INSERTED.id VALUES (@fName, @lName, @uName, @uPwd, @uWallet)", connect);
             command.Parameters.AddWithValue("@fName", user.FirstName);
             command.Parameters.AddWithValue("@lName", user.LastName);
             command.Parameters.AddWithValue("@uName", user.Username);
             command.Parameters.AddWithValue("@uPwd", user.Password);
-            command.Parameters.AddWithValue("@uEmail", user.Email);
             command.Parameters.AddWithValue("@uWallet", user.Wallet);
             
             int createdId = (int) command.ExecuteScalar();
@@ -60,8 +59,7 @@ public class DBRepository : IRepository
             string uName = (string) reader["username"];
             string uPassword = (string) reader["password"];
             int uWallet = (int) reader["wallet"];
-            string uEmail = (string) reader["email"];
-            return new User(userID,uFName,uLName,uName,uPassword,uWallet,uEmail);         
+            return new User(userID,uFName,uLName,uName,uPassword,uWallet);         
         }
         return new User();
     }
@@ -82,8 +80,7 @@ public class DBRepository : IRepository
             string uLName = (string) reader["last_name"];
             string uPassword = (string) reader["password"];
             int uWallet = (int) reader["wallet"];
-            string uEmail = (string) reader["email"];
-            return new User(uId,uFName,uLName,username,uPassword,uWallet,uEmail);         
+            return new User(uId,uFName,uLName,username,uPassword,uWallet);         
         }
         return new User();
     }
@@ -188,13 +185,13 @@ public class DBRepository : IRepository
     ///  </summary>
     /// <param name=""></param>
     /// <returns>This will return nothing at this time, but I would like it to return a bool or return the listing_id </returns>
-public void sellItem(int[] sellinfo)
+public void sellItem(Sellinfo sellinfo)
 {     
 
-        int saleItemId = sellinfo[0];
-        int saleItemQuanity = sellinfo[1];
-        int saleItemUser_id = sellinfo[2];
-        int saleItemPrice = sellinfo[3];
+        int saleItemId = sellinfo.ItemId;
+        int saleItemQuanity = sellinfo.Quantity;
+        int saleItemUser_id = sellinfo.SellerId;
+        int saleItemPrice = sellinfo.Price;
         
             
             try
@@ -243,7 +240,7 @@ public void sellItem(int[] sellinfo)
     ///  </summary>
     /// <param name=""></param>
     /// <returns>This will return nothing at this time, but I would like it to return a bool </returns>
-public void buyItem(int[] buyinfo)
+public void buyItem(Misc misc)
 {           
             try
             {
@@ -256,12 +253,9 @@ public void buyItem(int[] buyinfo)
                     using SqlCommand command = new SqlCommand("buy_item", connection);
                     command.Connection.Open();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@listing_id" , buyinfo[0]);
-                    command.Parameters.AddWithValue("@quantity" , buyinfo[1]);
-                    command.Parameters.AddWithValue("@buyer_id" , buyinfo[2]);
-                    command.Parameters.AddWithValue("@price" , buyinfo[3]);
-                    command.Parameters.AddWithValue("@item_id" , buyinfo[4]);
-                    command.Parameters.AddWithValue("@seller_id" , buyinfo[5]);
+                    command.Parameters.AddWithValue("@listing_id" , misc.ListingId);
+                    command.Parameters.AddWithValue("@quantity" , misc.Quantity);
+                    command.Parameters.AddWithValue("@buyer_id" , misc.BuyerId);
 
                     int i = command.ExecuteNonQuery();
                     if(i>0)
@@ -281,4 +275,45 @@ public void buyItem(int[] buyinfo)
 }
 
 
+public string buy_rand(int buyer_id)
+{
+               try
+            {
+
+            using SqlConnection connection = new SqlConnection(_connectionString);
+                {
+
+
+
+                    using SqlCommand command = new SqlCommand("buy_rand", connection);
+                    command.Connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@buyer_id" , buyer_id);
+
+                    string retItemName = command.ExecuteScalar().ToString();
+                    if(!string.IsNullOrEmpty(retItemName))
+                        {
+                        Console.WriteLine("That transaction is complete.");
+                        return retItemName;
+                        }
+                else return "error";
+                }
+
+                    
+            
+    }
+    catch(Exception ex)
+        {
+            throw;
+        }     
 }
+
+
+
+}
+
+
+
+
+
+

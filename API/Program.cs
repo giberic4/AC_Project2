@@ -50,6 +50,8 @@ builder.Services.AddAuthentication(options =>
 
 // Add services to the container.
 
+builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<ItemServices>();
 
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
 {
@@ -62,6 +64,7 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 
 builder.Services.AddScoped<IRepository, DBRepository>(ctx => new DBRepository(builder.Configuration.GetConnectionString("P2DB")));
 builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<ItemServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -70,45 +73,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-
-app.MapGet("/hello", () => "hello world!")
-    .RequireAuthorization();
-
 app.MapPost("/login", ([FromBody] User user, UserServices service) => {
-    bool worked = service.UserLogin(user);
-
-    if (worked)
-    {
-        var issuer = builder.Configuration["Jwt:Issuer"];
-        var audience = builder.Configuration["Jwt:Audience"];
-        var key = Encoding.ASCII.GetBytes
-        (builder.Configuration["Jwt:Key"]);
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim("Id", Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-                new Claim(JwtRegisteredClaimNames.Email, user.Username),
-                new Claim(JwtRegisteredClaimNames.Jti,
-                Guid.NewGuid().ToString())
-            }),
-            Expires = DateTime.UtcNow.AddMinutes(10),
-            Issuer = issuer,
-            Audience = audience,
-            SigningCredentials = new SigningCredentials
-            (new SymmetricSecurityKey(key),
-            SecurityAlgorithms.HmacSha512Signature)
-        };
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        var jwtToken = tokenHandler.WriteToken(token);
-        var stringToken = tokenHandler.WriteToken(token);
-        return Results.Ok(stringToken);
-    }
-    return Results.Unauthorized();
-
+    return service.UserLogin(user);
 });
 
 
@@ -116,6 +82,10 @@ app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices servi
     User user = new User();
     user.Id=userid;
     return service.ViewPersonalInventory(user).listOfItems;
+});
+
+app.MapGet("/hello", () => {
+    return "Hello";
 });
 
 app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
@@ -138,8 +108,21 @@ app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service)
     return Results.Created("/users/createAccount", service.CreateAccount(user));
 });
 
-app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
-    return "User Created: " + Results.Created("/users", service.CreateAccount(user));
+
+app.MapPost("store/buy/", ([FromBody] Misc intarr, ItemServices service) => {
+    service.buyItem(intarr);
+});
+
+app.MapPost("grabbag", ([FromBody] int num, ItemServices service) => {
+
+    return service.buy_rand(num);
+
+});
+
+
+app.MapPost("store/sell/", ([FromBody] Sellinfo intarr, ItemServices service) => {
+    Console.WriteLine("AAAAAAAAAAAA",intarr);
+    service.sellItem(intarr);
 });
 
 // Configure the HTTP request pipeline.
@@ -155,5 +138,7 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+
 
 app.Run();
