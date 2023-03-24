@@ -127,7 +127,6 @@ app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices servi
 
 // return 0;
 
-});
 
 app.MapGet("/hello", () => {
     return "Hello";

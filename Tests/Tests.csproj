@@ -24,13 +24,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-<<<<<<< HEAD
-    <ProjectReference Include="..\Services\Services.csproj" />
-=======
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
     <ProjectReference Include="..\API\API.csproj" />
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
   </ItemGroup>
 
 </Project>

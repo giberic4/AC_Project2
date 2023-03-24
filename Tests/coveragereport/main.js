@@ -219,45 +219,33 @@ for (i = 0, l = charts.length; i < l; i++) {
 
 var assemblies = [
   {
-<<<<<<< HEAD
-    "name": "DataAccess",
-    "classes": [
-      { "name": "DataAccess.DBRepository", "rp": "DataAccess_DBRepository.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 43, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "DataAccess.Secrets", "rp": "DataAccess_Secrets.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 5, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-=======
     "name": "API",
     "classes": [
-      { "name": "API.Controllers.WeatherForecastController", "rp": "API_WeatherForecastController.html", "cl": 0, "ucl": 17, "cal": 17, "tl": 32, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "API.WeatherForecast", "rp": "API_WeatherForecast.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 12, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Program", "rp": "API_Program.html", "cl": 0, "ucl": 14, "cal": 14, "tl": 25, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "API_Program.html", "cl": 0, "ucl": 95, "cal": 95, "tl": 188, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "WebAPI.Controllers.UserController", "rp": "API_UserController.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 33, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "DataAccess",
     "classes": [
-      { "name": "DataAccess.DBRepository", "rp": "DataAccess_DBRepository.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 38, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
+      { "name": "DataAccess.DBRepository", "rp": "DataAccess_DBRepository.html", "cl": 17, "ucl": 165, "cal": 182, "tl": 319, "cb": 0, "tb": 22, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "DataAccess.Secrets", "rp": "DataAccess_Secrets.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "Models",
     "classes": [
-<<<<<<< HEAD
-      { "name": "Models.Item", "rp": "Models_Item.html", "cl": 0, "ucl": 22, "cal": 22, "tl": 40, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Models.Marketplace", "rp": "Models_Marketplace.html", "cl": 0, "ucl": 43, "cal": 43, "tl": 71, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Models.User", "rp": "Models_User.html", "cl": 36, "ucl": 17, "cal": 53, "tl": 83, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-=======
-      { "name": "Models.Item", "rp": "Models_Item.html", "cl": 22, "ucl": 0, "cal": 22, "tl": 40, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Models.Item", "rp": "Models_Item.html", "cl": 28, "ucl": 18, "cal": 46, "tl": 73, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Models.Marketplace", "rp": "Models_Marketplace.html", "cl": 43, "ucl": 0, "cal": 43, "tl": 71, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Models.User", "rp": "Models_User.html", "cl": 53, "ucl": 0, "cal": 53, "tl": 83, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
+      { "name": "Models.Misc", "rp": "Models_Misc.html", "cl": 0, "ucl": 24, "cal": 24, "tl": 59, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Models.Sellinfo", "rp": "Models_Sellinfo.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 61, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Models.User", "rp": "Models_User.html", "cl": 53, "ucl": 0, "cal": 53, "tl": 86, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Models.UserDto", "rp": "Models_UserDto.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "Services",
     "classes": [
-<<<<<<< HEAD
-      { "name": "Services.UserServices", "rp": "Services_UserServices.html", "cl": 9, "ucl": 3, "cal": 12, "tl": 49, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-=======
-      { "name": "Services.UserServices", "rp": "Services_UserServices.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 46, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
+      { "name": "Services.ItemServices", "rp": "Services_ItemServices.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 17, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Services.UserServices", "rp": "Services_UserServices.html", "cl": 9, "ucl": 24, "cal": 33, "tl": 57, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
 

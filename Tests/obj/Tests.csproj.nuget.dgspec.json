@@ -1,35 +1,114 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Tests\\Tests.csproj": {}
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj",
-        "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\obj\\",
+        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj",
+        "projectName": "API",
+        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj"
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj"
+              },
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj",
+        "projectName": "DataAccess",
+        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj"
               }
             }
           }
@@ -69,24 +148,22 @@
         }
       }
     },
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj": {
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\obj\\",
+        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -124,35 +201,33 @@
         }
       }
     },
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj": {
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\obj\\",
+        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Models\\Models.csproj"
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj"
               }
             }
           }
@@ -186,35 +261,39 @@
         }
       }
     },
-    "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Tests\\Tests.csproj": {
+    "C:\\Users\\giber\\Githome\\AC_P2\\back\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Tests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Tests\\Tests.csproj",
-        "packagesPath": "C:\\Users\\boneb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Tests\\obj\\",
+        "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\giber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boneb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\giber\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\API\\API.csproj"
               },
-              "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\boneb\\Revature\\230206-NET\\myWork\\JRiley\\Project2\\P2-AEJ-Backend\\Services\\Services.csproj"
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\DataAccess\\DataAccess.csproj"
+              },
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Models\\Models.csproj"
+              },
+              "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\giber\\Githome\\AC_P2\\back\\Services\\Services.csproj"
               }
             }
           }
