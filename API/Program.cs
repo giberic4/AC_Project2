@@ -10,6 +10,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 using JWTWeb;
+using Serilog;
+using Microsoft.AspNetCore.HttpLogging;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("../Logs/logs.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
 
 var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -71,59 +79,162 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Host.UseSerilog();
+
+builder.Services.AddHttpLogging(logging =>
+{
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestHeaders.Add("sec-ch-ua");
+    logging.ResponseHeaders.Add("MyResponseHeader");
+    logging.MediaTypeOptions.AddText("application/javascript");
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+
+});
+
+
+
 var app = builder.Build();
 
+app.UseStaticFiles();
+
+app.UseHttpLogging();
+
 app.MapPost("/login", ([FromBody] User user, UserServices service) => {
-    return service.UserLogin(user);
+    try{
+        Log.Information("User attempting login...");
+        return service.UserLogin(user);
+    }
+    catch (Exception ex){
+        Log.Error("Error! Something fatal happened with login", ex);
+        throw;
+    }
 });
 
 
 app.MapGet("/user-inventory/userid", ([FromQuery] int userid, UserServices service) => {
-    User user = new User();
-    user.Id=userid;
-    return service.ViewPersonalInventory(user).listOfItems;
+    try{
+        Log.Information("Viewing user inventory...");
+        User user = new User();
+        user.Id=userid;
+        return service.ViewPersonalInventory(user).listOfItems;
+    }
+    catch(Exception){
+        Log.Error("Error! Something fatal happened with user inventory");
+        throw;
+    }
 });
+
 
 app.MapGet("/hello", () => {
-    return "Hello";
+    try{
+        Log.Information("Saying hello...");
+        return "Hello";
+    }
+    catch(Exception ex){
+        Log.Error("Something Fatal happened when attempting to say hello", ex);
+        throw;
+    }
 });
+
 
 app.MapGet("/user", ([FromQuery] int userid, UserServices service) => {
-    return service.GetUserByID(userid);
+    try{
+        Log.Information("Attempting to track user by id...");
+        return service.GetUserByID(userid);
+    }
+    catch(Exception ex){
+        Log.Error("Something fatal happened when getting user by id", ex);
+        throw;
+    }
 });
 
-app.MapGet("/user1", ([FromQuery] string username, UserServices service) => {
-    return service.GetUserByUsername(username);
+
+    app.MapGet("/user1", ([FromQuery] string username, UserServices service) => {
+    try{
+        Log.Information("Getting user by username");
+        return service.GetUserByUsername(username);
+    }
+    catch(Exception ex){
+        Log.Error("Something fatal happened when retrieving user via username", ex);
+        throw;
+    }
 });
+
 
 app.MapGet("/marketplace", (UserServices service) => {
-    return service.GetMarketplaceItems();
+    try{
+        Log.Information("Attempting to view marketplace");
+        return service.GetMarketplaceItems();
+    }
+    catch(Exception ex){
+        Log.Error("Something fatal happened when viewing marketplace", ex);
+        throw;
+    }
 });
+
 
 app.MapGet("/marketplaceByName", (string searchitem, UserServices service) => {
-    return service.getMarketplaceItemsByName(searchitem);
+    try{
+        Log.Information("Getting market items by name");
+        return service.getMarketplaceItemsByName(searchitem);
+    }
+    catch(Exception ex){
+        Log.Error("Something fatal happened when getting market items by name", ex);
+        throw;
+    }
 });
 
+
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
-    return Results.Created("/users/createAccount", service.CreateAccount(user));
+    try{
+        Log.Information("Attempting to create account");
+        return Results.Created("/users/createAccount", service.CreateAccount(user));
+        }
+    catch(Exception ex){
+        Log.Error("Something fatal happened when creating account", ex);
+        throw;
+    }
 });
 
 
 app.MapPost("store/buy/", ([FromBody] Misc intarr, ItemServices service) => {
-    service.buyItem(intarr);
+    try{
+        Log.Information("Attempting to buy item");
+        service.buyItem(intarr);
+    }
+    catch(Exception ex){
+        Log.Information("Something fatal happened when buying item", ex);
+        throw;
+    }
 });
+
 
 app.MapPost("grabbag", ([FromBody] int num, ItemServices service) => {
-
-    return service.buy_rand(num);
-
+    try{
+        Log.Information("Using the grab bag");
+        return service.buy_rand(num);
+    }
+    catch(Exception ex){
+        Log.Error("Something fatal happened when using grab bag", ex);
+        throw;
+    }
 });
+
 
 
 app.MapPost("store/sell/", ([FromBody] Sellinfo intarr, ItemServices service) => {
-    Console.WriteLine("AAAAAAAAAAAA",intarr);
-    service.sellItem(intarr);
+        try{
+            Log.Information("Attempting to sell items");
+            Console.WriteLine("AAAAAAAAAAAA",intarr);
+            service.sellItem(intarr);
+        }
+        catch(Exception ex){
+            Log.Error("Something fatal happened when selling item", ex);
+            throw;
+        }
 });
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
