@@ -4,6 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 # User-specific files
+**/Models/obj/Debug/net7.0/Models.assets.cache
+**/Services/obj/Debug/net7.0/Services.assets.cache
 **/DataAccess/obj/Debug/net7.0/DataAccess.assets.cache
 *.rsuser
 *.suo
